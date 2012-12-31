@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 	var _generateFailing = function(src, config) {
 		var moduleList = [];
 
-		util.expand(src).forEach(function(file) {
+		src.forEach(function(file) {
 			var module = util.fileToModuleName(file, config);
 			moduleList.push(module);
 
@@ -65,7 +65,12 @@ module.exports = function(grunt) {
 		var config = grunt.config.get(this.name);
 		var rjsconfig = grunt.config.get('requirejs');
 
-		var modules = _generateFailing(config.generateFailing, rjsconfig);
+		config.include = util.expand(config.include);
+		config.exclude = util.expand(config.exclude);
+
+		config.include = _.difference(config.include, config.exclude);
+
+		var modules = _generateFailing(config.include, rjsconfig);
 		var file = _generateRunner(rjsconfig, modules);
 
 		if (!config.run) {
