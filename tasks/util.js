@@ -30,7 +30,7 @@ var util = {
 
 	fileToModuleName: function(filePath, rjsconfig) {
 		var baseUrl = rjsconfig.baseUrl;
-		var absolutePath = filePath;
+		var absolutePath = path.normalize(filePath);
 
 		//console.log('');
 		//console.log(absolutePath);
@@ -51,30 +51,30 @@ var util = {
 		var packages = rjsconfig.packages || [];
 		var transforms = _.map(paths, function(val, key) {
 			return {
-				from: val,
-				to: key
+				from: key,
+				to: val
 			};
 		}).concat(packages.map(function(pkg) {
-			return {
-				from: pkg.location,
-				to: pkg.name
-			};
+		return {
+			from: pkg.location,
+			to: pkg.name
+		};
 		}));
 
 		//console.log(relativePath);
 
 		_.chain(transforms)
-			.sortBy(function(obj) {
-				//transform in order from most complex to simplest
-				return -1 * obj.from.length;
-			})
-			.every(function(obj) {
-				if (relativePath.search(obj.from) !== -1) {
-					relativePath = relativePath.replace(obj.from, obj.to);
-					return false;
-				}
-				return true;
-			});
+		.sortBy(function(obj) {
+			//transform in order from most complex to simplest
+			return -1 * obj.from.length;
+		})
+		.every(function(obj) {
+			if (relativePath.search(obj.from) !== -1) {
+				relativePath = relativePath.replace(obj.from, obj.to);
+				return false;
+			}
+			return true;
+		});
 
 
 		//console.log(relativePath);
