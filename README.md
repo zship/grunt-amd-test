@@ -1,4 +1,4 @@
 grunt-amd-test
 ==============
 
-Generating failing unit tests and running unit tests for AMD-based projects
+Generates test runners for AMD-based projects

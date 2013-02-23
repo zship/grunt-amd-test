@@ -2,7 +2,7 @@
 	"name": "grunt-amd-test",
 	"title": "grunt-amd-test",
 	"description": "Generates failing unit tests and runs unit tests for AMD-based projects",
-	"version": "0.4.0",
+	"version": "0.4.1",
 	"homepage": "https://github.com/zship/grunt-amd-test",
 	"author": "Zach Shipley <zach@zachshipley.com>",
 	"repository": {

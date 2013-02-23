@@ -55,31 +55,14 @@ module.exports = function(grunt) {
 	};
 
 
-	grunt.registerTask('test', 'Generates QUnit/jasmine html and optionally runs QUnit/jasmine', function() {
+	grunt.registerTask('amd-test', 'Generates QUnit/jasmine html', function() {
 		var config = grunt.config.get(this.name);
 		var done = this.async();
 
+		var modules = grunt.file.expand({filter: 'isFile'}, config.files);
+
 		util.loadConfig(grunt.config.get('requirejs')).then(function(rjsconfig) {
-			config.include = util.expand(config.include);
-			config.exclude = util.expand(config.exclude);
-
-			var modules = _.difference(config.include, config.exclude);
-
-			var file = _generateRunner(config.mode, rjsconfig, modules);
-
-			if (!config.run) {
-				return;
-			}
-
-			var serverPath = 'http://localhost:';
-			serverPath += grunt.config.get('server').port + '/';
-			serverPath += path.relative(grunt.config.get('server').base, path.resolve(file));
-
-			grunt.config.set('qunit', {
-				test: serverPath
-			});
-
-			grunt.task.run(['server', 'qunit:test']);
+			_generateRunner(config.mode, rjsconfig, modules);
 			done();
 		});
 
