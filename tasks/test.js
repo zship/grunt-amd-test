@@ -2,7 +2,7 @@ module.exports = function(grunt) {
 	'use strict';
 
 	var path = require('path');
-	var _ = grunt.utils._;
+	var _ = require('underscore');
 	var jade = require('jade');
 	var util = require('./util.js');
 

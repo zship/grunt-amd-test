@@ -2,7 +2,7 @@
 	"name": "grunt-amd-test",
 	"title": "grunt-amd-test",
 	"description": "Generates failing unit tests and runs unit tests for AMD-based projects",
-	"version": "0.1.4",
+	"version": "0.4.0",
 	"homepage": "https://github.com/zship/grunt-amd-test",
 	"author": "Zach Shipley <zach@zachshipley.com>",
 	"repository": {
@@ -11,11 +11,12 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"grunt": "0.3.x",
+		"grunt": "0.4.x",
+		"underscore": "1.4.x",
 		"jade": "0.27.x",
 		"handlebars": "1.0.x",
 		"mout": "0.3.x",
-		"deferreds.js": "0.1.x"
+		"deferreds": "0.2.x"
 	},
 	"keywords": [
 		"gruntplugin",

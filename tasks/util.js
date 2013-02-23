@@ -4,8 +4,8 @@ var fs = require('fs');
 var path = require('path');
 var grunt = require('grunt/lib/grunt.js');
 var mixin = require('mout/object/deepMixIn');
-var _ = grunt.utils._;
-var Deferred = require('deferreds.js/Deferred');
+var _ = require('underscore');
+var Deferred = require('deferreds').Deferred;
 
 
 var util = {
@@ -23,7 +23,7 @@ var util = {
 		}
 
 		arr.forEach(function(val) {
-			files = files.concat(grunt.file.expandFiles(val));
+			files = files.concat(grunt.file.expand({filter: 'isFile'}, val));
 		});
 
 		return _.uniq(files);
