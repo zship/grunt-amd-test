@@ -57,14 +57,8 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('amd-test', 'Generates QUnit/jasmine html', function() {
 		var config = grunt.config.get(this.name);
-		var done = this.async();
-
 		var modules = grunt.file.expand({filter: 'isFile'}, config.files);
-
-		amd.loadConfig(grunt.config.get('requirejs')).then(function(rjsconfig) {
-			_generateRunner(config.mode, rjsconfig, modules);
-			done();
-		});
-
+		var rjsconfig = amd.loadConfig(grunt.config.get('requirejs'));
+		_generateRunner(config.mode, rjsconfig, modules);
 	});
 };
