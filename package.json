@@ -2,7 +2,7 @@
 	"name": "grunt-amd-test",
 	"title": "grunt-amd-test",
 	"description": "Generates test runners for AMD-based projects, with QUnit and jasmine support",
-	"version": "0.4.2",
+	"version": "0.4.3",
 	"homepage": "https://github.com/zship/grunt-amd-test",
 	"author": "Zach Shipley <zach@zachshipley.com>",
 	"repository": {
@@ -12,6 +12,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"grunt": "0.4.x",
+		"grunt-lib-amd": "0.1.x",
 		"underscore": "1.4.x",
 		"jade": "0.27.x",
 		"handlebars": "1.0.x",

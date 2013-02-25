@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 	var path = require('path');
 	var _ = require('underscore');
 	var jade = require('jade');
-	var util = require('./util.js');
+	var amd = require('grunt-lib-amd');
 
 	var testDir = path.resolve(process.cwd() + '/test');
 	var testRunner = path.resolve(__dirname + '/tpl/runner.jade');
@@ -61,7 +61,7 @@ module.exports = function(grunt) {
 
 		var modules = grunt.file.expand({filter: 'isFile'}, config.files);
 
-		util.loadConfig(grunt.config.get('requirejs')).then(function(rjsconfig) {
+		amd.loadConfig(grunt.config.get('requirejs')).then(function(rjsconfig) {
 			_generateRunner(config.mode, rjsconfig, modules);
 			done();
 		});
