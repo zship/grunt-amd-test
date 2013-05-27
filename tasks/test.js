@@ -30,8 +30,8 @@ module.exports = function(grunt) {
 				];
 				break;
 			case 'qunit':
-				styles = ['lib/qunit-1.10.0.css'];
-				scripts = ['lib/qunit-1.10.0.js'];
+				styles = ['lib/qunit-1.11.0.css'];
+				scripts = ['lib/qunit-1.11.0.js'];
 				break;
 		}
 
