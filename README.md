@@ -52,7 +52,7 @@ grunt-amd-test reads two sections of your config: `amd-test` and `requirejs`.
 
 `requirejs` is a standard [r.js configuration
 object](https://github.com/jrburke/r.js/blob/master/build/example.build.js).
-grunt-amd-test uses `basePath`, `paths`, and `packages` (all optional) to
+grunt-amd-test uses `baseUrl`, `paths`, and `packages` (all optional) to
 transform file names to AMD module names.
 
 Once these options are in place, `grunt amd-test` will run amd-test.
