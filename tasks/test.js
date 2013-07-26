@@ -15,7 +15,8 @@ module.exports = function(grunt) {
 		config.baseUrl = path.relative(testDir, config.baseUrl);
 
 		modules = modules.map(function(mod) {
-			return path.relative(testDir, path.resolve(process.cwd() + '/' + mod));
+			var modPath = path.resolve(process.cwd() + '/' + mod);
+			return path.relative(testDir, modPath);
 		});
 
 		var styles;
@@ -47,7 +48,13 @@ module.exports = function(grunt) {
 
 		var tpl = grunt.file.read(testRunner, 'utf-8');
 		tpl = jade.compile(tpl, {filename: testRunner, pretty: true});
-		var data = tpl({mode: mode, styles: styles, scripts: scripts, rjsconfig: JSON.stringify(config, false, 4), modules: JSON.stringify(modules, false, 4)});
+		var data = tpl({
+			mode: mode, 
+			styles: styles, 
+			scripts: scripts, 
+			rjsconfig: JSON.stringify(config, false, 4), 
+			modules: JSON.stringify(modules, false, 4)
+		});
 		var outPath = testDir + '/runner.html';
 		grunt.file.write(outPath, data, 'utf-8');
 
