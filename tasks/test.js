@@ -36,6 +36,7 @@ module.exports = function(grunt) {
 				break;
 		}
 
+		scripts = scripts.concat(['lib/es5-shim.js']);
 		scripts = scripts.concat(['lib/require.js']);
 
 		styles = styles.map(function(s) {
